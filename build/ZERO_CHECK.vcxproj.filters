@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\build\CMakeFiles\1f8a956c80db775fdafa38994004765d\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{ED6640E5-D367-3E84-B762-DEC2D91FE9ED}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

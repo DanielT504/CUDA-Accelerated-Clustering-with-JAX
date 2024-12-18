@@ -1,0 +1,10 @@
+^C:\USERS\USER\DESKTOP\NOT BACKED UP\CUDA-ACCELERATED-CLUSTERING-WITH-JAX\BUILD\CMAKEFILES\1F8A956C80DB775FDAFA38994004765D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX" "-BC:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/build/kmeans_cuda.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
