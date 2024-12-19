@@ -1,48 +1,12 @@
-Starting build and run script in: /c/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX
-Cleaning up existing build directory...
-Configuring the project with CMake...
--- Building for: Visual Studio 16 2019
--- Selecting Windows SDK version 10.0.19041.0 to target Windows 10.0.19045.
--- The CUDA compiler identification is NVIDIA 10.2.89 with host compiler MSVC 19.29.30037.0
--- Detecting CUDA compiler ABI info
--- Detecting CUDA compiler ABI info - done
--- Check for working CUDA compiler: <cuda-path>/bin/nvcc.exe - skipped
--- Detecting CUDA compile features
--- Detecting CUDA compile features - done
--- Configuring done (11.9s)
--- Generating done (0.1s)
--- Build files have been written to: C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/build
-Building the project...
-Microsoft (R) Build Engine version 16.10.0+4242f381a for .NET Framework
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-  1>Checking Build System
-  Building Custom Rule C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/CMakeLists.txt
-  Compiling CUDA source file ..\cuda\kmeans_cuda.cu...
-  
-  C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\build>"<cuda-path>\bin\nvcc.exe"  --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30037\bin\HostX64\x64" -x cu -rdc=true  -I"<cuda-path>\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static --generate-code=arch=compute_30,code=[compute_30,sm_30] -Xcompiler="/EHsc -Ob2"    -D_WINDOWS -DNDEBUG -D"CMAKE_INTDIR=\"Release\"" -D_MBCS -D"CMAKE_INTDIR=\"Release\"" -Xcompiler "/EHsc /W1 /nologo /O2 /Fdkmeans_cuda.dir\Release\vc142.pdb /FS /Zi  /MD /GR" -o kmeans_cuda.dir\Release\kmeans_cuda.obj "C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\cuda\kmeans_cuda.cu" 
-  kmeans_cuda.cu
-  
-  C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\build>"<cuda-path>\bin\nvcc.exe" -dlink -o kmeans_cuda.dir\Release\kmeans_cuda.device-link.obj -Xcompiler "/EHsc /W1 /nologo /O2 /Zi  /MD /GR" -L"<cuda-path>\lib\x64" cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib -forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler="-O2 -Ob2" -DNDEBUG "--generate-code=arch=compute_30,code=[compute_30,sm_30]" -Xcompiler=-MD   --machine 64 kmeans_cuda.dir\Release\kmeans_cuda.obj 
-  cudadevrt.lib
-  cudart_static.lib
-  kernel32.lib
-  user32.lib
-  gdi32.lib
-  winspool.lib
-  shell32.lib
-  ole32.lib
-  oleaut32.lib
-  uuid.lib
-  comdlg32.lib
-  advapi32.lib
-  kmeans_cuda.obj
-     Creating library C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/build/Release/kmeans_cuda.lib and object C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/build/Release/kmeans_cuda.exp
-  kmeans_cuda.vcxproj -> C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\build\Release\kmeans_cuda.exe
-  Building Custom Rule C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/CMakeLists.txt
-Running the program...
-CPU time: 0.0179 ms
-GPU time: 0.0865 ms
-Results are consistent.
-Script completed successfully!
-Sanitizing the log...
+Starting CUDA-JAX Workflow in: /c/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX
+Compiling CUDA library...
+kmeans_cuda.cu
+   Creating library cuda\kmeans_cuda.lib and object cuda\kmeans_cuda.exp
+Running JAX clustering with CUDA acceleration...
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Not backed up\CUDA-Accelerated-Clustering-with-JAX\jax\kmeans_jax.py", line 8, in <module>
+    cuda_lib = ctypes.CDLL("../cuda/kmeans_cuda.so")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python39\lib\ctypes\__init__.py", line 374, in __init__
+    self._handle = _dlopen(self._name, mode)
+FileNotFoundError: Could not find module 'C:\Users\User\Desktop\Not backed up\cuda\kmeans_cuda.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Python script execution failed
