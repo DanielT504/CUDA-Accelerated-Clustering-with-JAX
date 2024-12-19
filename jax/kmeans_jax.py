@@ -5,6 +5,7 @@ import pandas as pd
 import os
 import ctypes
 import time
+import subprocess
 
 # Get the current script's directory
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +53,7 @@ def update_centroids(data, clusters, n_clusters):
     return np.array([data[clusters == k].mean(axis=0) for k in range(n_clusters)])
 
 # Generate random data
-n_points = 10_000_000  # Adjust for testing purposes
+n_points = 10_000  # Adjust for testing purposes
 data = np.random.rand(n_points, 2).astype(np.float32)
 centroids = np.random.rand(5, 2).astype(np.float32)
 
@@ -71,14 +72,14 @@ distances_jax = compute_distances_jax(data_jax, centroids_jax)
 distances_jax.block_until_ready()  # Ensure computation is complete
 end = time.time()
 time_jax = end - start
-print(f"JAX Execution Time (CPU/GPU parallelism): {time_jax:.6f} seconds")
+print(f"JAX Execution Time (CPU, parallelism): {time_jax:.6f} seconds")
 
 # Timing CUDA implementation
 start = time.time()
 distances_cuda = compute_distances_cuda(data, centroids)
 end = time.time()
 time_cuda = end - start
-print(f"CUDA Execution Time (GPU, high parallelism): {time_cuda:.6f} seconds")
+print(f"CUDA Execution Time (GPU (Nvidia Quadro K2000), high parallelism): {time_cuda:.6f} seconds")
 
 # Calculate speedups
 speedup_jax_vs_python = time_python / time_jax
@@ -90,15 +91,21 @@ print(f"Speedup (JAX vs Python): {speedup_jax_vs_python:.2f}x")
 print(f"Speedup (CUDA vs Python): {speedup_cuda_vs_python:.2f}x")
 print(f"Speedup (CUDA vs JAX): {speedup_cuda_vs_jax:.2f}x")
 
-# Save results
+# Save clustering results
 clusters = assign_clusters(distances_cuda)
-# Ensure the output directory exists
 output_dir = os.path.abspath(os.path.join(script_dir, "../r"))
 os.makedirs(output_dir, exist_ok=True)
 
-# Save results
 output_file = os.path.join(output_dir, "cluster_results.csv")
 results = pd.DataFrame(data, columns=["X1", "X2"])
 results["Cluster"] = np.array(clusters)
 results.to_csv(output_file, index=False)
 print(f"Clustering results saved to {output_file}")
+
+# Call the R script for analysis and visualization
+try:
+    r_script_path = os.path.abspath(os.path.join(script_dir, "../r/analyze_results.R"))
+    subprocess.run(["Rscript", r_script_path], check=True)
+    print("R analysis and visualization completed successfully.")
+except subprocess.CalledProcessError as e:
+    print(f"R script execution failed: {e}")

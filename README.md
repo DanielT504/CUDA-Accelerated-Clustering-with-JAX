@@ -14,11 +14,9 @@ cmake --build . --config Release
 cd Release
 nvprof .\kmeans_cuda.exe
 
-
-Comparison to CPU
-
-JAX demo
-R demo
-Comprehensive Readme
-
 export CUDAPATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2"
+
+
+better data, decide on hexbin
+
+Comprehensive Readme
