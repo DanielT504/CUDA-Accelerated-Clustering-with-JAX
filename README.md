@@ -1,12 +1,12 @@
 # CUDA-Accelerated-Clustering-with-JAX
 
 ```
-Python Execution Time (CPU, no parallelism): 0.171278 seconds
-JAX Execution Time (CPU, parallelism): 0.109112 seconds
-CUDA Execution Time (GPU (Nvidia Quadro K2000), high parallelism): 0.086840 seconds
-Speedup (JAX vs Python): 1.57x
-Speedup (CUDA vs Python): 1.97x
-Speedup (CUDA vs JAX): 1.26x
+Python Execution Time (CPU, no parallelism): 39.73658 seconds
+JAX Execution Time (CPU, parallelism): 0.194787 seconds
+CUDA Execution Time (GPU (Nvidia Quadro K2000), high parallelism): 0.048876 seconds
+Speedup (JAX vs Python): 204x
+Speedup (CUDA vs Python): 813x
+Speedup (CUDA vs JAX): 3.99x
 ```
 
 An implementation of k-Means clustering (visualized with R) that uses CUDA for GPU-accelerated distance calculations and JAX for efficient centroid updates and cluster assignments.
