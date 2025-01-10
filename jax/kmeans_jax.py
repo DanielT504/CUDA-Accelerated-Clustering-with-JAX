@@ -52,10 +52,13 @@ def assign_clusters(distances):
 def update_centroids(data, clusters, n_clusters):
     return np.array([data[clusters == k].mean(axis=0) for k in range(n_clusters)])
 
-# Generate random data
-n_points = 10_000  # Adjust for testing purposes
+# Generate larger data for more computation
+n_points = 10_000_000  # Increase the number of data points (e.g., 1 million)
 data = np.random.rand(n_points, 2).astype(np.float32)
-centroids = np.random.rand(5, 2).astype(np.float32)
+
+# Keep the same number of clusters
+n_clusters = 5
+centroids = np.random.rand(n_clusters, 2).astype(np.float32)
 
 # Timing Python implementation
 start = time.time()
@@ -97,12 +100,18 @@ output_dir = os.path.abspath(os.path.join(script_dir, "../r"))
 os.makedirs(output_dir, exist_ok=True)
 
 output_file = os.path.join(output_dir, "cluster_results.csv")
-results = pd.DataFrame(data, columns=["X1", "X2"])
-results["Cluster"] = np.array(clusters)
-results.to_csv(output_file, index=False)
-print(f"Clustering results saved to {output_file}")
+print(f"Saving clustering results to: {output_file}")
 
-# Call the R script for analysis and visualization
+try:
+    results = pd.DataFrame(data, columns=["X1", "X2"])
+    results["Cluster"] = np.array(clusters)
+    results.to_csv(output_file, index=False)
+    print(f"Clustering results saved successfully to {output_file}")
+except OSError as e:
+    print(f"Failed to save clustering results: {e}")
+    raise
+
+Call the R script for analysis and visualization
 try:
     r_script_path = os.path.abspath(os.path.join(script_dir, "../r/analyze_results.R"))
     subprocess.run(["Rscript", r_script_path], check=True)

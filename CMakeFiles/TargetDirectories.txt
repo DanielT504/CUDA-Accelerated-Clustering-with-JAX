@@ -1,0 +1,3 @@
+C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/CMakeFiles/kmeans_cuda.dir
+C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Desktop/Not backed up/CUDA-Accelerated-Clustering-with-JAX/CMakeFiles/ZERO_CHECK.dir
